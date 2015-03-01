@@ -60,6 +60,7 @@ var octo = {
 	incrementClicks: function() {
 		model.currentCat.clickCount++;
 		detailsView.render();
+		adminView.hideForm();
 	}
 };
 
@@ -97,8 +98,8 @@ var detailsView = {
 	},
 	render: function(){
 		var cat = octo.getCurrentCat();
-		var listStr = '<span class="counter">'+ cat.clickCount +'</span> clicks <br>'+
-					  '<span class="name">'+ cat.name  +'</span>'+
+		var listStr = '<span class="name">'+ cat.name  +'</span>'+
+					  '<span class="counter">'+ cat.clickCount +' clicks</span>'+
                       '<img data-id="'+ cat.id +'" src="'+ cat.picture +'">'
 		this.$container.html(listStr);
 	}
@@ -111,6 +112,7 @@ var adminView = {
 		this.$form = this.$container.find('#editform');
 		this.$pictureInput = this.$form.find('input[name="picture"]');
 		this.$nameInput = this.$form.find('input[name="name"]');
+		this.$clicksInput = this.$form.find('input[name="clicks"]');
 		this.$cancelButton = this.$form.find('input[value="Cancel"]');
 		this.$saveButton = this.$form.find('input[value="Save"]');
 		this.handleClicks();
@@ -131,16 +133,18 @@ var adminView = {
 		var currentCat = octo.getCurrentCat();
 		this.$pictureInput.val(currentCat.picture),
 		this.$nameInput.val(currentCat.name)
+		this.$clicksInput.val(currentCat.clickCount)
 		this.$form.removeClass('hidden');
 	},
 	hideForm: function(){
 		this.$pictureInput.val(''),
 		this.$nameInput.val('')
+		this.$clicksInput.val('')
 		this.$form.addClass('hidden');
 	},
 	validateForm: function(){
 		var isValid = true;
-		if(!this.$pictureInput.val() || !this.$nameInput.val()) {
+		if(!this.$pictureInput.val() || !this.$nameInput.val() || !this.$clicksInput.val()) {
 			isValid = false;
 		}
 		if (!isValid) {
@@ -152,7 +156,8 @@ var adminView = {
 	saveForm: function(){
 		octo.editCat({
 			picture: this.$pictureInput.val(),
-			name: this.$nameInput.val()
+			name: this.$nameInput.val(),
+			clickCount: this.$clicksInput.val()
 		});
 		this.hideForm();
 	}

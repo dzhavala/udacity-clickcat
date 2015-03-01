@@ -6,6 +6,8 @@
     <style>
         body {
             font: normal 1.5em/1.5 sans-serif;   
+            width: 800px;
+            margin: 0 auto;
         }
         /* Cat List */
         #catlist {
@@ -15,10 +17,8 @@
         }
         #catlist button {
             margin-right: 10px;
-            padding: 5px 10px;
         }
         #catlist button.active {
-            background: #fff;
             border-color: #f00;
         }
         
@@ -29,8 +29,14 @@
             color: #fff;
             text-shadow: 0 1px 0 #000;
             font-size: 14px;
+            text-align: center;
         }
         #catDetails .name {
+            display: block;
+            font-size: 2em;
+            margin-bottom: -5px;
+        }
+        #catDetails .counter {
             display: block;
             margin-bottom: 10px;
         }
@@ -76,6 +82,11 @@
         #editform input[type="submit"]{
             float: right;
         }
+        #catlist button, #editform input[type="reset"], #editform input[type="submit"],#editCatButton {
+            padding: 8px 10px;
+            background: #fff;
+            border: #fff solid 1px;
+        }
 
     </style>
 </head>
@@ -88,6 +99,7 @@
         <form id="editform" class="hidden" action="#">
             <label>Color:<input type="text" name="picture" required></label>
             <label>Name<input type="text" name="name" required></label>
+            <label>ClickCount<input type="text" name="clicks" required></label>
             <input type="reset" value="Cancel">
             <input type="submit" value="Save">
         </form>
