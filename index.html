@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cat Clicker</title>
+    <style>
+        body {
+            font: normal 1.5em/1.5 sans-serif;   
+        }
+        /* Cat List */
+        #catlist {
+            margin-bottom: 20px;
+            background: #303F9F;
+            padding: 1em;
+        }
+        #catlist button {
+            margin-right: 10px;
+            padding: 5px 10px;
+        }
+        #catlist button.active {
+            background: #fff;
+            border-color: #f00;
+        }
+        
+        /* Cat Details*/
+        #catDetails {
+            background: #03A9F4;
+            padding: 20px;
+            color: #fff;
+            text-shadow: 0 1px 0 #000;
+            font-size: 14px;
+        }
+        #catDetails .name {
+            display: block;
+            margin-bottom: 10px;
+        }
+        #catDetails img {
+            cursor: pointer;
+            max-width: 200px;
+        }
+
+        /* Edit form */
+        #admin {
+            background: #303F9F;
+            padding: 1em; 
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        #editCatButton {
+            float: left;
+        }
+        #editform {
+            float: right;
+            width: 40%;
+            margin-right: 10%;
+        }
+        #editform.hidden {
+            display: none;
+        }
+        #editform label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 12px;
+            color: #fff;
+        }
+        #editform label input {
+            display: block;
+            margin-top: 3px;
+            width: 100%;
+            padding: 5px 10px;
+            box-sizing: border-box;
+        }
+        #editform input[type="reset"]{
+            float: left;
+        }
+        #editform input[type="submit"]{
+            float: right;
+        }
+
+    </style>
+</head>
+<body>
+	
+    <div id="catlist"></div>
+    <div id="catDetails"></div>
+    <div id="admin">
+        <button id="editCatButton">Edit cat</button>
+        <form id="editform" class="hidden" action="#">
+            <label>Color:<input type="text" name="picture" required></label>
+            <label>Name<input type="text" name="name" required></label>
+            <input type="reset" value="Cancel">
+            <input type="submit" value="Save">
+        </form>
+    </div>
+
+<script src="jquery.js"></script>
+<script src="app.js"></script>   
+</body>
+</html>
